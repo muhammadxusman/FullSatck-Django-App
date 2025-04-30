@@ -1,0 +1,14 @@
+<h2>Welcome {{ user.username }}!</h2>
+<a href="{% url 'add_note' %}">Add New Note</a>
+<ul>
+  {% for note in notes %}
+    <li>
+      <strong>{{ note.title }}</strong> - {{ note.content }}
+      (<a href="{% url 'edit_note' note.id %}">Edit</a> |
+       <a href="{% url 'delete_note' note.id %}">Delete</a>)
+    </li>
+  {% empty %}
+    <li>No notes yet.</li>
+  {% endfor %}
+</ul>
+<a href="{% url 'logout' %}">Logout</a>
